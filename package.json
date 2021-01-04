@@ -1,0 +1,21 @@
+{
+  "name": "one_two_three_all",
+  "version": "1.0.0",
+  "private": false,
+  "description": "",
+  "main": "src/library-main.js",
+    "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yoshikatsu-Koyanagi/one_two_three_all.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yoshikatsu-Koyanagi/one_two_three_all/issues"
+  },
+  "homepage": "https://github.com/Yoshikatsu-Koyanagi/one_two_three_all#readme"
+}
+
