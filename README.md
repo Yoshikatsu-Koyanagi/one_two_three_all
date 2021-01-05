@@ -1,60 +1,72 @@
-# plus_minus_button
+# one_two_three_button
 ‣example
+  ````
+  <div id="App">
 
-----index.html----
-````
-<div id="App">
-      <mycomp_plus
-      :width = 500
-      :height = 300
-      :max = max
-      :amount = amount
+      <mycomp1
+      :width = 200
+      :height = 200
       :bg_c_1 = bg_c_1
       :bg_c_2 = bg_c_2
-      @plusclick=amount++></mycomp_plus>        //@plusclick: ボタンが押されたらamountを1増やす
-      <mycomp_minus
-      :width = 500
-      :height = 300
-      :min = min
-      :amount = amount
+      @click1="click1"></mycomp1>
+
+      <mycomp2
+      :width = 200
+      :height = 200
       :bg_c_2 = bg_c_2
       :bg_c_3 = bg_c_3
-      @minusclick=amount--></mycomp_minus>      //@minusclick: ボタンが押されたらamountを1減らす
-      <mycomp_num
-      :width = 500
-      :height = 300
-      :amount = amount
+      @click2=click2></mycomp2>
+      
+      <mycomp3
+      :width = 200
+      :height = 200  
+      :bg_c_2 = bg_c_2
+      :bg_c_3 = bg_c_3
+      @click3=click3></mycomp3>
+
+      <mycompall
+      :width = 200
+      :height = 200  
       :bg_c_1 = bg_c_1
       :bg_c_2 = bg_c_2
-      :bg_c_3 = bg_c_3
-      @numclick="num"></mycomp_num>             //@numclick: ボタンが押されたらnum()発火
-</div>
+      @clickall=clickall></mycompall>
+      
+    </div>
+
   ````
   
   ----index.js----
   ````
 import Vue from 'vue';
-import {component_plus, component_minus, component_num} from 'plus_minus_button';
+import {component1, component2, component3, componentAll} from 'one_two_three_all';
 
 new Vue({
     el: '#App',
     data: {
-         max: 99,                               //最大値
-         min: 0,                                //最小値
-         amount: 20,                            //初期値
-         bg_c_1: "rgba(100,99,255,0.05)",       //背景のグラデーション上部
-         bg_c_2: "rgba(100,99,255,0.125)",      //背景のグラデーション中部
-         bg_c_3: "rgba(100,99,255,0.25)",       //背景のグラデーション下部
+        bg_c_1: "rgba(20,49,237,0.1)",                //背景の端の色
+        bg_c_2: "rgba(20,49,237,0.15)",               //背景の端と中央の間の色
+        bg_c_3: "rgba(20,49,237,0.3)",                //背景の中央の色
     },
     components: {
-        'mycomp_plus': component_plus,
-        'mycomp_minus': component_minus,
-        'mycomp_num': component_num,
-    },　
+        'mycomp1': component1,
+        'mycomp2': component2,
+        'mycomp3': component3,
+        'mycompall': componentAll,
+    },
     methods: {
-        num(){
-            console.log(this.amount);           //コンソールにamountを表示
-        }
+        click1(){
+            console.log("1")
+        },
+        click2(){
+            console.log("2")
+        },
+        click3(){
+            console.log("3")
+        },
+        clickall(){
+            console.log("all")
+        },
     }
-})
-````
+}) 
+
+ ````
