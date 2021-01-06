@@ -22,46 +22,20 @@ export default {
   },
   methods: {
     draw_all_btn(num_color){
-      //数字ボタンの枠
-      this.context.globalCompositeOperation = "destination-out";
-      this.context.beginPath();
-      this.context.moveTo(this.num_side_margin+this.r,this.num_top_margin);
-      this.context.arc(this.num_side_margin+this.r, this.num_top_margin+this.r, this.r, Math.PI*1.5, Math.PI, true);  
-      this.context.lineTo(this.num_side_margin, this.num_top_margin+this.num_height-this.r);
-      this.context.arc(this.num_side_margin+this.r, this.num_top_margin+this.num_height-this.r, this.r, Math.PI, Math.PI*0.5, true); 
-      this.context.lineTo(this.num_side_margin+this.num_width-this.r,this.num_top_margin+this.num_height);
-      this.context.arc(this.num_side_margin+this.num_width-this.r, this.num_top_margin+this.num_height-this.r, this.r, Math.PI*0.5, Math.PI*0, true); 
-      this.context.lineTo(this.num_side_margin+this.num_width,this.num_top_margin+this.r);
-      this.context.arc(this.num_side_margin+this.num_width-this.r, this.num_top_margin+this.r, this.r, Math.PI*0, Math.PI*1.5, true); 
-      this.context.closePath();
-      this.context.fillStyle = "rgba(0,0,0,1)";
-      this.context.fill();
-
-      this.context.globalCompositeOperation = "source-over";
+      this.context.clearRect(0,0,this.nbw,this.nbh);
       this.context.fillStyle = num_color;
-      this.context.fill();
+      this.context.fillRect(0,0,this.nbw,this.nbh);
 
       //数字ボタンの"数字"
       this.context.font = this.font;
       this.context.fillStyle = "rgba(0,0,0,1)";
       this.context.textAlign = "center";
-      this.context.fillText("全", this.nbw*0.5, this.num_top_margin+this.num_height*0.8,this.num_width);
-    
-      this.context.lineWidth = this.flame_weight;	
-      this.context.strokeStyle = "rgb(0,0,0)"; 
-      this.context.stroke();
+      this.context.fillText("全", this.nbw*0.5, this.nbh*0.8,this.nbw);
     },
   },
   mounted() {
     this.nbw = this.width;
     this.nbh = this.height;
-
-    this.flame_weight = (this.nbw+this.nbh)*0.5*this.flame_weight_ratio //ボタンの枠の太さ
-    this.num_width = this.nbw*this.num_width_ratio;
-    this.num_height = this.nbh*this.num_height_ratio;
-    this.num_side_margin = this.nbw*(1-this.num_width_ratio)*0.5;
-    this.num_top_margin = this.nbh*(1-this.num_height_ratio)*0.5;
-    this.r = (this.nbw+this.nbh)*0.5*this.r_ratio;
    
     let canvas = this.$refs.canv;
     this.context = canvas.getContext('2d');
@@ -79,28 +53,24 @@ export default {
       this.bg2 = this.bg_c_2;
     }
 
-    this.gradient_b = this.context.createLinearGradient(0, this.nbh*0.5, this.nbw, this.nbh*0.5);
-    this.gradient_b.addColorStop(0.0 , this.bg2);
-    this.gradient_b.addColorStop(1.0 , this.bg1);
-    this.context.fillStyle = this.gradient_b;
-    this.context.fillRect(0,0,this.nbw,this.nbh);  
     
     //数字ボタンを作成
-    this.font_size = this.num_height*this.font_ratio; //フォントサイズ
+    this.font_size = this.nbh*this.font_ratio; //フォントサイズ
     this.font = `${this.font_size}px ${this.font_name}`; //フォントサイズと書体    
     let num_color; //数字ボタンの色
-    this.gradient = this.context.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
+    this.gradient = this.context.createLinearGradient(this.nbw*0.5,0,this.nbw*0.5,this.nbh);
     this.gradient.addColorStop(0.0 , 'rgba(0,0,0,0.35)');
     this.gradient.addColorStop(0.8 , 'rgba(0,0,0,0.05)');
     num_color = this.gradient;
     this.draw_all_btn(num_color);
+
     let num_down = false;
     let touch = false;   
 
 
     //タッチされたとき（スマホ）
     canvas.addEventListener('touchstart', () => { 
-        let gradient2 = this.context.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
+        let gradient2 = this.context.createLinearGradient(this.nbw*0.5,0,this.nbw*0.5,this.nbh);
         gradient2.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
         gradient2.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
         num_color = gradient2;
@@ -126,7 +96,7 @@ export default {
     //クリックが押されたとき
     canvas.onmousedown = (e) => {
       if (touch == false) {
-        let gradient2 = this.context.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
+        let gradient2 = this.context.createLinearGradient(this.nbw*0.5,0,this.nbw*0.5,this.nbh);
         gradient2.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
         gradient2.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
         num_color = gradient2;
