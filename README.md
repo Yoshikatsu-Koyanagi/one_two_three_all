@@ -44,9 +44,9 @@ import {component_btn1, component_btn2, component_btn3, component_btnAll} from '
 new Vue({
     el: '#App',
     data: {
-        bg_c_1: "rgba(10,100,200,0.1)",                //背景の端の色 
-        bg_c_2: "rgba(10,100,200,0.15)",               //背景の端と中央の間の色
-        bg_c_3: "rgba(10,100,200,0.3)",                //背景の中央の色
+        bg_c_1: "rgba(10,100,200,0.1)",                
+        bg_c_2: "rgba(10,100,200,0.15)",               
+        bg_c_3: "rgba(10,100,200,0.3)",                
     },
     components: {
         'mycomp1': component_btn1,
