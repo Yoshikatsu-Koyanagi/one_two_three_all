@@ -53,18 +53,24 @@ export default {
     },
   },
   mounted() {
-    this.flame_weight = this.width*this.flame_weight_ratio //ボタンの枠の太さ
-
     this.nbw = this.width;
     this.nbh = this.height;
-    
+
+    this.flame_weight = this.nbw*this.flame_weight_ratio //ボタンの枠の太さ
     this.num_width = this.nbw*this.num_width_ratio;
     this.num_height = this.nbh*this.num_height_ratio;
     this.num_side_margin = this.nbw*(1-this.num_width_ratio)*0.5;
     this.num_top_margin = this.nbh*(1-this.num_height_ratio)*0.5;
    
-    let c = this.$refs.canv;
-    this.context = c.getContext('2d');
+    let canvas = this.$refs.canv;
+    this.context = canvas.getContext('2d');
+
+    if (this.bg_c_2 === undefined){
+      this.bg_c_2 = "rgba(20,49,237,0.15)";
+    } 
+    if (this.bg_c_3 === undefined){
+      this.bg_c_3 = "rgba(20,49,237,0.3)";
+    }
 
     this.gradient_b = this.context.createLinearGradient(0, this.nbh*0.5, this.nbw, this.nbh*0.5);
     this.gradient_b.addColorStop(0.0 , this.bg_c_3);
@@ -83,7 +89,7 @@ export default {
     this.draw_3_btn(num_color);
     let num_down = false;
 
-    c.onmousedown = (e) => {
+    canvas.onmousedown = (e) => {
           let gradient2 = this.context.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
           gradient2.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
           gradient2.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
@@ -93,7 +99,7 @@ export default {
           return num_down = true;
     }
   
-    c.onmouseup = (e) => {
+    canvas.onmouseup = (e) => {
         num_color = this.gradient;
         this.draw_3_btn(num_color);  
     } 
@@ -101,7 +107,7 @@ export default {
     if (num_down == true) {
     }
   
-    c.onmouseout = (e) => {
+    canvas.onmouseout = (e) => {
         num_color = this.gradient;
         this.draw_3_btn(num_color);
     }       
