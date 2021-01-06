@@ -12,12 +12,12 @@ export default {
   props: ["width","height","bg_c_2","bg_c_3"],
   data() {
     return {
-      num_width_ratio: 1,
-      num_height_ratio: 1,
-      flame_weight_ratio: 0.01, //キャンバスの横幅に対するボタンの枠の太さの割合
+      num_width_ratio: 0.95,
+      num_height_ratio: 0.95,
+      flame_weight_ratio: 0.01, //キャンバスの横幅と高さの平均に対するボタンの枠の太さの割合
       font_ratio: 0.8, //数字ボタンの高さに対するフォントサイズの割合
       font_name: "meirio", //フォントの書体
-      r: 10, //数字ボタンの枠の角の半径
+      r_ratio: 0.1, //キャンバスの横幅と高さの平均に対する数字ボタンの枠の角の半径の割合
     }
   },
   methods: {
@@ -56,11 +56,12 @@ export default {
     this.nbw = this.width;
     this.nbh = this.height;
 
-    this.flame_weight = this.nbw*this.flame_weight_ratio //ボタンの枠の太さ
+    this.flame_weight = (this.nbw+this.nbh)*0.5*this.flame_weight_ratio //ボタンの枠の太さ
     this.num_width = this.nbw*this.num_width_ratio;
     this.num_height = this.nbh*this.num_height_ratio;
     this.num_side_margin = this.nbw*(1-this.num_width_ratio)*0.5;
     this.num_top_margin = this.nbh*(1-this.num_height_ratio)*0.5;
+    this.r = (this.nbw+this.nbh)*0.5*this.r_ratio;
    
     let canvas = this.$refs.canv;
     this.context = canvas.getContext('2d');
