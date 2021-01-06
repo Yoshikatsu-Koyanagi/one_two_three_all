@@ -94,29 +94,67 @@ export default {
     num_color = this.gradient;
     this.draw_all_btn(num_color);
     let num_down = false;
+    let touch = false;   
 
-    canvas.onmousedown = (e) => {
-          let gradient2 = this.context.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
-          gradient2.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
-          gradient2.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
-          num_color = gradient2;
-          this.draw_all_btn(num_color);
-          this.$emit("clickall");
-          return num_down = true;
-    }
-  
-    canvas.onmouseup = (e) => {
+
+    //タッチされたとき（スマホ）
+    canvas.addEventListener('touchstart', () => { 
+        let gradient2 = this.context.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
+        gradient2.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
+        gradient2.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
+        num_color = gradient2;
+        this.draw_all_btn(num_color);
+        num_down = true;
+        touch = true;
+    },　{
+      passive: true
+    });
+
+    //タッチが離れたとき（スマホ）
+    canvas.ontouchend = (e) => {
         num_color = this.gradient;
         this.draw_all_btn(num_color);  
-    } 
         //数字ボタンが押されて且つ数字ボタン上で離されたとき        
-    if (num_down == true) {
+        if (num_down == true) {
+        this.$emit("clickall");
+        num_down = false;
+        touch = true;
+        }
     }
-  
+
+    //クリックが押されたとき
+    canvas.onmousedown = (e) => {
+      if (touch == false) {
+        let gradient2 = this.context.createLinearGradient(this.nbw*0.5,this.num_top_margin,this.nbw*0.5,this.num_top_margin+this.num_height);
+        gradient2.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
+        gradient2.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
+        num_color = gradient2;
+        this.draw_all_btn(num_color);
+        num_down = true;
+      }
+    }
+
+    //クリックが離されたとき
+    canvas.onmouseup = (e) => {
+      if (touch == false) {
+        num_color = this.gradient;
+        this.draw_all_btn(num_color); 
+        //数字ボタンが押されて且つ数字ボタン上で離されたとき        
+        if (num_down == true) {
+          this.$emit("clickall");
+          num_down = false;
+        }
+      }
+    } 
+
+    //マウスがキャンバス外に出た時
     canvas.onmouseout = (e) => {
+      if (touch == false) {
         num_color = this.gradient;
         this.draw_all_btn(num_color);
-    }       
+        num_down = false;
+      }
+    }            
   },
 }
 </script>

@@ -1,8 +1,8 @@
 // コンポーネントのインポート
-import component1 from './components/App1.vue'; //(1)Vueのファイル名に変更
-import component2 from './components/App2.vue';
-import component3 from './components/App3.vue';
-import componentAll from './components/AppAll.vue';
+import component_btn1 from './components/App1.vue'; //(1)Vueのファイル名に変更
+import component_btn2 from './components/App2.vue';
+import component_btn3 from './components/App3.vue';
+import component_btnAll from './components/AppAll.vue';
 
 
 // Vue.use() によって実行される install 関数を定義
@@ -29,4 +29,4 @@ if (GlobalVue) {
 }
 
 // (npm/webpack 等で) モジュールとして利用させるためコンポーネントを export する
-export {component1, component2, component3, componentAll};
+export {component_btn1, component_btn2, component_btn3, component_btnAll};
