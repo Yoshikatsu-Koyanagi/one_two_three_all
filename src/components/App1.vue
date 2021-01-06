@@ -66,15 +66,15 @@ export default {
     this.context = canvas.getContext('2d');
 
     if (this.bg_c_1 === undefined){
-      this.bg_c_1 = "rgba(20,49,237,0.1)";
+      this.bg1 = "rgba(20,49,237,0.1)";
     } 
     if (this.bg_c_2 === undefined){
-      this.bg_c_2 = "rgba(20,49,237,0.15)";
+      this.bg2 = "rgba(20,49,237,0.15)";
     }
 
     this.gradient_b = this.context.createLinearGradient(0, this.nbh*0.5, this.nbw, this.nbh*0.5);
-    this.gradient_b.addColorStop(0.0 , this.bg_c_1);
-    this.gradient_b.addColorStop(1.0 , this.bg_c_2);
+    this.gradient_b.addColorStop(0.0 , this.bg1);
+    this.gradient_b.addColorStop(1.0 , this.bg2);
     this.context.fillStyle = this.gradient_b;
     this.context.fillRect(0,0,this.nbw,this.nbh);  
     
