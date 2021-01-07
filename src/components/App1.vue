@@ -1,5 +1,5 @@
 <template>
-   <canvas ref="canv" :width="width" :height="height" style="background-color:yellow;"></canvas>
+   <canvas ref="canv" :width="width" :height="height"></canvas>
 </template>
 
 <style scoped>
