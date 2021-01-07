@@ -31,6 +31,9 @@ export default {
     },
   },
   mounted() {
+    let canvas = this.$refs.canv;
+    this.context = canvas.getContext('2d');
+    
     if (this.bg_c_2 === undefined){
       this.bg2 = "rgba(20,49,237,0.15)";
     } 
