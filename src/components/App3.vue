@@ -36,7 +36,8 @@ export default {
 
     if (this.bg_c_2 === undefined){
       this.bg2 = "rgba(20,49,237,0.15)";
-    } else {
+    } 
+    else {
       this.bg2 = this.bg_c_2;
     }
     if (this.bg_c_3 === undefined){

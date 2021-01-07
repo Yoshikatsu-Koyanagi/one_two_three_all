@@ -13,8 +13,6 @@ export default {
   props: ["width","height","bg_c_1","bg_c_2"],
   data() {
     return {
-      flame_weight_ratio: 0.02, //キャンバスの横幅と高さの平均に対するボタンの枠の太さの割合
-      font_ratio: 0.8, //数字ボタンの高さに対するフォントサイズの割合
       font_name: "meirio", //フォントの書体
       r_ratio: 0.1, //キャンバスの横幅と高さの平均に対する数字ボタンの枠の角の半径の割合
     }
@@ -33,9 +31,6 @@ export default {
     },
   },
   mounted() {
-    this.width = this.width;
-    this.height = this.height;
-   
     let canvas = this.$refs.canv;
     this.context = canvas.getContext('2d');
 
