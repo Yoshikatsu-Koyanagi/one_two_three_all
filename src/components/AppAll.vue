@@ -44,7 +44,7 @@ export default {
     this.gradient_pushed = this.context.createLinearGradient(this.width*0.5,0,this.width*0.5,this.height);
     this.gradient_pushed.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
     this.gradient_pushed.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
-    
+
     let num_color; //数字ボタンの色
     num_color = this.gradient;
     this.draw_all_btn(num_color);
@@ -54,7 +54,7 @@ export default {
 
     //タッチされたとき（スマホ）
     canvas.addEventListener('touchstart', () => { 
-        num_color = this.gradient2;
+        num_color = this.gradient_pushed;
         this.draw_all_btn(num_color);
         num_down = true;
         touch = true;
@@ -77,7 +77,7 @@ export default {
     //クリックが押されたとき
     canvas.onmousedown = (e) => {
       if (touch == false) {
-        num_color = this.gradient2;
+        num_color = this.gradient_pushed;
         this.draw_all_btn(num_color);
         num_down = true;
       }
