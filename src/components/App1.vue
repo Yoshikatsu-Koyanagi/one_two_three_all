@@ -10,7 +10,7 @@
 
 <script>
 export default { 
-  props: ["width","height","bg_c_1","bg_c_2"],
+  props: ["width","height"],
   data() {
     return {
       font_ratio: 0.8, //数字ボタンの高さに対するフォントサイズの割合
@@ -33,19 +33,6 @@ export default {
   mounted() {
     let canvas = this.$refs.canv;
     this.context = canvas.getContext('2d');
-
-    if (this.bg_c_1 === undefined){
-      this.bg1 = "rgba(20,49,237,0.1)";
-    } 
-    else {
-      this.bg1 = this.bg_c_1;
-    }
-    if (this.bg_c_2 === undefined){
-      this.bg2 = "rgba(20,49,237,0.15)";
-    }
-    else {
-      this.bg2 = this.bg_c_2;
-    }
     
     //数字ボタンを作成
     this.font_size = this.height*this.font_ratio; //フォントサイズ
