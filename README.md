@@ -3,7 +3,7 @@
 
  ----index.html----
   ````
-  <div id="App">
+   <div id="App">
 
       <mycomp1
       :width = 200
@@ -25,7 +25,7 @@
       :height = 200  
       @clickall=clickall></mycompall>
       
-    </div>
+   </div>
 
   ````
   
