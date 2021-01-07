@@ -37,10 +37,15 @@ export default {
     //数字ボタンを作成
     this.font_size = this.height*this.font_ratio; //フォントサイズ
     this.font = `${this.font_size}px ${this.font_name}`; //フォントサイズと書体    
-    let num_color; //数字ボタンの色
+
     this.gradient = this.context.createLinearGradient(this.width*0.5,0,this.width*0.5,this.height);
     this.gradient.addColorStop(0.0 , 'rgba(0,0,0,0.35)');
     this.gradient.addColorStop(0.8 , 'rgba(0,0,0,0.05)');
+    this.gradient_pushed = this.context.createLinearGradient(this.width*0.5,0,this.width*0.5,this.height);
+    this.gradient_pushed.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
+    this.gradient_pushed.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
+
+    let num_color; //数字ボタンの色
     num_color = this.gradient;
     this.draw_2_btn(num_color);
 
@@ -49,10 +54,7 @@ export default {
 
     //タッチされたとき（スマホ）
     canvas.addEventListener('touchstart', () => { 
-        let gradient2 = this.context.createLinearGradient(this.width*0.5,0,this.width*0.5,this.height);
-        gradient2.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
-        gradient2.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
-        num_color = gradient2;
+        num_color = this.gradient_pushed;
         this.draw_2_btn(num_color);
         num_down = true;
         touch = true;
@@ -75,10 +77,7 @@ export default {
     //クリックが押されたとき
     canvas.onmousedown = (e) => {
       if (touch == false) {
-        let gradient2 = this.context.createLinearGradient(this.width*0.5,0,this.width*0.5,this.height);
-        gradient2.addColorStop(0.0 , 'rgba(0,0,0,0.5)');
-        gradient2.addColorStop(0.8 , 'rgba(0,0,0,0.3)');
-        num_color = gradient2;
+        num_color = this.gradient_pushed;
         this.draw_2_btn(num_color);
         num_down = true;
       }
