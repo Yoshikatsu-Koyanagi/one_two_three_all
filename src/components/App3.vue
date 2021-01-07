@@ -56,6 +56,7 @@ export default {
     this.gradient.addColorStop(0.8 , 'rgba(0,0,0,0.05)');
     num_color = this.gradient;
     this.draw_3_btn(num_color);
+    
     let num_down = false;
     let touch = false;   
 
