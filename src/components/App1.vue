@@ -1,11 +1,12 @@
 <template>
-   <canvas ref="canv" :width="width" :height="height"></canvas>
+   <canvas ref="canv" :width="width" :height="height" style="background-color:yellow;"></canvas>
 </template>
 
 <style scoped>
-
+  canvas{
+    background-color: white;
+  }
 </style>
-
 
 <script>
 export default { 
