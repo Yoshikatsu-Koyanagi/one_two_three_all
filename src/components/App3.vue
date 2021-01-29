@@ -48,15 +48,14 @@ export default {
     let num_color; //数字ボタンの色
     num_color = this.gradient;
     this.draw_3_btn(num_color);
-    
-    let num_down = false;
+ 
     let touch = false;   
 
     //タッチされたとき（スマホ）
     canvas.addEventListener('touchstart', () => { 
         num_color = this.gradient_pushed;
         this.draw_3_btn(num_color);
-        num_down = true;
+        this.$emit("click3");
         touch = true;
     },　{
       passive: true
@@ -66,12 +65,6 @@ export default {
     canvas.ontouchend = (e) => {
         num_color = this.gradient;
         this.draw_3_btn(num_color);  
-        //数字ボタンが押されて且つ数字ボタン上で離されたとき        
-        if (num_down == true) {
-        this.$emit("click3");
-        num_down = false;
-        touch = true;
-        }
     }
 
     //クリックが押されたとき
@@ -79,7 +72,7 @@ export default {
       if (touch == false) {
         num_color = this.gradient_pushed;
         this.draw_3_btn(num_color);
-        num_down = true;
+        this.$emit("click3");
       }
     }
 
@@ -88,11 +81,6 @@ export default {
       if (touch == false) {
         num_color = this.gradient;
         this.draw_3_btn(num_color); 
-        //数字ボタンが押されて且つ数字ボタン上で離されたとき        
-        if (num_down == true) {
-          this.$emit("click3");
-          num_down = false;
-        }
       }
     } 
 
@@ -101,7 +89,6 @@ export default {
       if (touch == false) {
         num_color = this.gradient;
         this.draw_3_btn(num_color);
-        num_down = false;
       }
     }             
   },
