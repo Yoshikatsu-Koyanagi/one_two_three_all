@@ -1,38 +1,31 @@
 # one_two_three_all
 ‣example
+
  ----index.html----
   ````
-  <div id="App">
+   <div id="App">
 
       <mycomp1
       :width = 200
       :height = 200
-      :bg_c_1 = bg_c_1                                //背景の端の色 (書かなければデフォルト:"rgba(20,49,237,0.1)")
-      :bg_c_2 = bg_c_2                                //背景の端と中央の間の色 (書かなければデフォルト:"rgba(20,49,237,0.15)")
       @click1="click1"></mycomp1>
 
       <mycomp2
       :width = 200
       :height = 200
-      :bg_c_2 = bg_c_2                                
-      :bg_c_3 = bg_c_3                                //背景の中央の色 (書かなければデフォルト:"rgba(20,49,237,0.3)")
       @click2=click2></mycomp2>
       
       <mycomp3
       :width = 200
       :height = 200  
-      :bg_c_2 = bg_c_2
-      :bg_c_3 = bg_c_3
       @click3=click3></mycomp3>
 
       <mycompall
       :width = 200
       :height = 200  
-      :bg_c_1 = bg_c_1
-      :bg_c_2 = bg_c_2
       @clickall=clickall></mycompall>
       
-    </div>
+   </div>
 
   ````
   
@@ -43,10 +36,7 @@ import {component_btn1, component_btn2, component_btn3, component_btnAll} from '
 
 new Vue({
     el: '#App',
-    data: {
-        bg_c_1: "rgba(10,100,200,0.1)",                
-        bg_c_2: "rgba(10,100,200,0.15)",               
-        bg_c_3: "rgba(10,100,200,0.3)",                
+    data: {          
     },
     components: {
         'mycomp1': component_btn1,
